@@ -1,0 +1,36 @@
+.highlight-container {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .highlight-link {
+    width: 99%;
+    height: 100%;
+  }
+  
+  .highlight-image {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
+  
+  .shop-now-btn {
+    position: absolute;
+    bottom: 10%;
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    border:1px solid white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+  }
+  
+  .shop-now-btn:hover {
+    background-color: #e04e2a;
+  }
+  
