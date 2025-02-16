@@ -1,0 +1,27 @@
+.category-component {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(173, 193, 202);
+    height: 650px;
+}
+
+.category-title {
+    font-size: 34px;
+    max-width: 800px;
+    font-weight: bold;
+    text-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 70px;
+    margin-left: 350px;
+    color: rgb(1, 79, 110);
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next row */
+    justify-content: center;
+    gap: 20px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}

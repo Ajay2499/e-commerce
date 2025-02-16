@@ -62,7 +62,7 @@
     margin-right: 25px;
     color: var(--gsc-text-color-100);
     cursor: pointer;
-    color: blue;
+    color: darkblue;
     text-decoration: none;
     transition: background-color 0.3s;
   }

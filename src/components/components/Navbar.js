@@ -2,7 +2,7 @@ import "../CSS/Navbar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navbar">
+    <div className="navbar">
       <h1 className="logo">Fuaark</h1>
       <div className="nav-links">
       <a className="nav-li">Men</a>
@@ -22,7 +22,7 @@ const NavBar = () => {
         <a href="" className="nav-btn">Profile</a>
         <a href="" className="nav-btn">Cart</a>
       </div>
-    </nav>
+    </div>
   );
 };
 

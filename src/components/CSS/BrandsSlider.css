@@ -1,32 +1,32 @@
 .brands-slider {
-    /* overflow: hidden; */
-    width: 100%;
-    margin-top: 20vh;
-    background-color: #f5f5f5;
-    padding: 10px 0;
-    position: relative;
-    display: flex;
-    align-items: center;
+  overflow: hidden;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.brands-track {
+  display: flex;
+  white-space: nowrap;
+  animation: rotateLogos 20s linear infinite;
+}
+
+.brand-logo {
+  width: 100px;
+  height: auto;
+  margin: 0 90px;
+}
+
+/* Ensure smooth, continuous looping effect */
+@keyframes rotateLogos {
+  from {
+    transform: translateX(0%);
   }
-  
-  .brands-track {
-    display: flex;
-    width: 200%;
-    animation: rotateLogos 15s linear infinite;
+  to {
+    transform: translateX(-50%);
   }
-  
-  .brand-logo {
-    width: 100px;
-    height: 70px;
-    margin: 0 90px;
-  }
-  
-  @keyframes rotateLogos {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-30%);
-    }
-  }
-  
+}

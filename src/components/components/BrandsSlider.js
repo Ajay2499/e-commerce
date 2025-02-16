@@ -22,6 +22,10 @@ const BrandsSlider = () => {
         <img src={logo6} alt="Brand 6" className="brand-logo" />
         <img src={logo7} alt="Brand 7" className="brand-logo" />
         <img src={logo8} alt="Brand 8" className="brand-logo" />
+        <img src={logo5} alt="Brand 5" className="brand-logo" />
+        <img src={logo6} alt="Brand 6" className="brand-logo" />
+        <img src={logo7} alt="Brand 7" className="brand-logo" />
+        <img src={logo8} alt="Brand 8" className="brand-logo" />
       </div>
     </div>
   );
