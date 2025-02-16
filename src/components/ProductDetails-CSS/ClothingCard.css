@@ -1,0 +1,33 @@
+.clothing-card {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    color: black;
+  }
+  
+  .clothing-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .clothing-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .clothing-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .clothing-price {
+    font-size: 16px;
+    color: green;
+  }
+  

@@ -1,0 +1,104 @@
+  .category-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: navy;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+
+  .filter-btn,
+  .sort-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    /* background-color: #0056b3; */
+    color: rgb(26, 24, 24);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  .filter-cross {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    /* background-color: #0056b3; */
+    color: rgb(26, 24, 24);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  .filter-btn:hover,
+  .sort-btn:hover {
+    background-color: #b9d6f3;
+  }
+
+  .content-container {
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+  }
+
+  .filter-sidebar {
+    width: 14%;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+  }
+
+  .price-slider {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .size-filters label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .cards-container {
+    display: grid;
+    /* max-width: 75%; */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    /* flex-wrap: wrap; */
+    flex-grow: 1;
+  }
+
+  .clothing-card {
+    padding: 20px;
+    height: 40vh;
+    text-align: center;
+    background: #e3e3e3;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .no-products {
+    font-weight: bold;
+    margin-left: 25%;
+  }
+
+  .filter-price-sidebar{
+    display: flex;
+    font-weight: bold;
+  }
+
+  .filter-p{
+    margin-right: 150px;
+  }

@@ -27,9 +27,9 @@ const CategoryComponent = () => {
         <div className="category-component">
             <h1 className="category-title">Join The Fuaark Clan Community, Where Fitness Meets Unity.</h1>
             <div className="category-list">
-                    {categories.map((category) => (
-                        <CategoryCard category={category.name} imageURL={category.image} />
-                    ))}
+                {categories.map((category) => (
+                    <CategoryCard category={category.name} imageURL={category.image} link={`/category/${category.name.toLowerCase()}`} />
+                ))}
             </div>
         </div>
     );

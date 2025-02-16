@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/CategoryCard.css";
 
 const CategoryCard = ({ imageURL, category, link }) => {
   return (
-    <a href="/" className="category-card">
+    <Link to={link} className="category-card">
       <img src={imageURL} alt={category} className="category-image" />
-      <h2 className="category-label">{category}</h2>
-    </a>
+      <div className="category-label">{category}</div>
+    </Link>
   );
 };
 
