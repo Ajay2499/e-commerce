@@ -65,7 +65,6 @@ const CategorySection = () => {
                         <p className="filter-p">₹0</p>
                         <p>₹{price}</p>
                         </div>
-
                         <h3>Filter by Size</h3>
                         <div className="size-filters">
                             {["XS", "S", "M", "L", "XL"].map((size) => (
