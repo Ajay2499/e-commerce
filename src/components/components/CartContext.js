@@ -26,8 +26,16 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const handleQuantityProducts = (id, amount, size) => {
+    setCartItems((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id && item.size === size ? { ...item, quantity: Math.max(1, item.quantity + amount) } : item
+      )
+    );
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart , handleQuantityProducts }}>
       {children}
     </CartContext.Provider>
   );

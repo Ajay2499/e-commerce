@@ -1,0 +1,95 @@
+.footer {
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    /* margin: 0 auto; */
+  }
+  
+  .footer-about {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-about h3,
+  .footer-contact h3 {
+    font-weight: bold;
+  }
+  
+  .footer-about p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    min-width: 400px;
+    margin-left: 80px;
+  }
+  
+  .footer-pages{
+    margin-left: 40%;
+  }
+
+  .footer-policies{
+    margin-left: 40%;
+  }
+
+  .footer-links h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;
+    margin-bottom: 20px;
+    text-overflow: ellipsis; /* Adds "..." if the text is too long */
+  }
+  
+  
+  .footer-contact {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer-contact a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .footer-contact a:hover {
+    text-decoration: underline;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .social-icons svg {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  

@@ -1,8 +1,10 @@
 import "../CSS/Navbar.css";
 import { Link } from "react-router-dom";
 import React from "react";
+import { useCart } from "./CartContext";
 
 const NavBar = () => {
+  const {cartItems} = useCart();
   return (
     <div className="navbar">
       <Link to="/" className="logo">Fuaark</Link>
@@ -22,7 +24,7 @@ const NavBar = () => {
           </svg>
         </button>
         <a href="/" className="nav-btn">Profile</a>
-        <Link to="/cart" className="nav-btn">Cart</Link>
+        <Link to="/cart" className="nav-btn">Cart ({cartItems.length})</Link>
       </div>
     </div>
   );

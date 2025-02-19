@@ -1,35 +1,20 @@
 import "../CSS/Cart.css";
 import NavBar from "./Navbar";
 import { useCart } from "./CartContext";
+import Footer from "./Footer";
 
 const Cart = () => {
-    const { cartItems , removeFromCart } = useCart();
-    // console.log(cartItems);
+    const { cartItems, removeFromCart, handleQuantityProducts } = useCart();
 
     // Function to handle quantity change
-    // const handleQuantityChange = (id, amount) => {
-    //     setCartItems((prevCart) =>
-    //         prevCart.map((item) =>
-    //             item.id === id ? { ...item, quantity: Math.max(1, item.quantity + amount) } : item
-    //         )
-    //     );
-    // };
-
-    // // Function to remove item from cart
-    // const removeFromCart = (id) => {
-    //     setCartItems((prevCart) => prevCart.filter((item) => item.id !== id));
-    // };
-
-    // // Function to remove item from cart
-    const HandleDelete = (id ,size) => {
-        removeFromCart(id , size); 
+    const handleQuantityChange = (id, amount, size) => {
+        handleQuantityProducts(id, amount, size);
     };
 
-    // Ensure cartItems is an array before using map() and reduce()
-    if (!Array.isArray(cartItems)) {
-        console.error("cartItems is not an array:", cartItems);
-        return <p>Error: Cart data is invalid.</p>;
-    }
+    // // Function to remove item from cart
+    const HandleDelete = (id, size) => {
+        removeFromCart(id, size);
+    };
 
     // Calculate total price
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -37,7 +22,10 @@ const Cart = () => {
     return (
         <div className="cart-container">
             <NavBar />
-            <h2 className="cart-title">Cart</h2>
+            <div className="cart-title-count">
+                <h2 className="cart-title">Cart</h2>
+                <h3 className="cart-count">{cartItems.length} items in your cart</h3>
+            </div>
 
             {cartItems.length === 0 ? (
                 <p className="empty-cart">Your cart is empty</p>
@@ -54,15 +42,15 @@ const Cart = () => {
                             </div>
 
                             <div className="cart-item-quantity">
-                                <button onClick={() => HandleDelete(item.id , item.size)}>Delete</button>
-                                {/* <button onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity <= 1}>−</button> */}
+                                {/* <button onClick={() => HandleDelete(item.id , item.size)}>Delete</button> */}
+                                <button onClick={() => handleQuantityChange(item.id, -1, item.size)} disabled={item.quantity <= 1}>−</button>
                                 <span>{item.quantity}</span>
-                                {/* <button onClick={() => handleQuantityChange(item.id, 1)}>+</button> */}
+                                <button onClick={() => handleQuantityChange(item.id, 1, item.size)} disabled={item.quantity >= 10}>+</button>
                             </div>
 
                             <p className="cart-item-total">Rs. {item.price * item.quantity}</p>
 
-                            {/* <button className="remove-btn" onClick={() => removeFromCart(item.id)}>🗑</button> */}
+                            <button onClick={() => HandleDelete(item.id, item.size)}>Delete</button>
                         </div>
                     ))}
                 </div>

@@ -4,6 +4,7 @@ import BrandsSlider from "./BrandsSlider";
 import CategoryComponent from "./CategoryComponent";
 import VideoBuffering from "./VideoBuffering";
 import ProductCard from "../ProductDetails/ProductCard";
+import Footer from "./Footer";
 
 const HomePage = () =>{
 
@@ -14,6 +15,7 @@ const HomePage = () =>{
             <BrandsSlider />
             <CategoryComponent />
             <VideoBuffering />
+            <Footer />
         </div>
     );
 };
