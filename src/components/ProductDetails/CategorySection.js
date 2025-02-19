@@ -11,13 +11,15 @@ const CategorySection = () => {
     const formattedCategory = categoryName.toUpperCase();
     const [categoryData, setCategoryData] = useState([]);
     const [filter, setFilter] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [lowToHigh, setlowtohigh] = useState(null);
+    const [selectedSizes, setSelectedSizes] = useState([]);
 
     useEffect(() => {
         const fetchCategoryData = async () => {
             try {
                 const response = await fetch("/Data.json");
                 const jsonData = await response.json();
-                const newdata = jsonData.categories[formattedCategory];
 
                 if (jsonData.categories[formattedCategory]) {
                     setCategoryData(jsonData.categories[formattedCategory]);
@@ -30,6 +32,19 @@ const CategorySection = () => {
         };
         fetchCategoryData();
     }, [formattedCategory]);
+
+    const handleSort = (order) => {
+        setlowtohigh(order === "lowToHigh");
+    };
+
+    const handleSizeChange = (size) => {
+        setSelectedSizes((prevSizes) => prevSizes.includes(size) ? prevSizes.filter((s) => s != size) : [...prevSizes, size]);
+    };
+
+    const filteredAndSortedData = [...categoryData]
+        .filter((product) => product.price <= price)
+        .filter((product) => selectedSizes.length === 0 || product.size.some((s) => selectedSizes.includes(s)))
+        .sort((a, b) => (lowToHigh ? a.price - b.price : b.price - a.price));
 
     return (
         <div className="category-container">
@@ -44,11 +59,20 @@ const CategorySection = () => {
                         <FaFilter /> Filter
                     </button>
                 }
-                <button className="sort-btn">
+                <button onClick={() => setIsOpen(!isOpen)} className="sort-btn">
                     <FaSort /> Sort Featured
                 </button>
+                {isOpen && (
+                    <div className="dropdown-menu">
+                        <button className="dropdown-item" onClick={() => handleSort("lowToHigh")} >
+                            Price: Low to High
+                        </button>
+                        <button className="dropdown-item" onClick={() => handleSort("highToLow")}>
+                            Price: High to Low
+                        </button>
+                    </div>
+                )}
             </div>
-
             <div className="content-container">
                 {filter ?
                     <div className="filter-sidebar">
@@ -62,22 +86,21 @@ const CategorySection = () => {
                             className="price-slider"
                         />
                         <div className="filter-price-sidebar">
-                        <p className="filter-p">₹0</p>
-                        <p>₹{price}</p>
+                            <p className="filter-p">₹0</p>
+                            <p>₹{price}</p>
                         </div>
                         <h3>Filter by Size</h3>
                         <div className="size-filters">
                             {["XS", "S", "M", "L", "XL"].map((size) => (
                                 <label key={size}>
-                                    <input type="checkbox" value={size} /> {size}
+                                    <input type="checkbox" onChange={() => handleSizeChange(size)} value={size} /> {size}
                                 </label>
                             ))}
                         </div>
                     </div> : null}
                 <div className="cards-container">
-                    {categoryData.length > 0 ? (
-                        categoryData.filter((product) => product.price <= price)
-                        .map((product) => (
+                    {filteredAndSortedData.length > 0 ? (
+                        filteredAndSortedData.map((product) => (
                             <ClothingCard key={product.id} product={product} />
                         ))
                     ) : (

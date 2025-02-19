@@ -94,11 +94,36 @@
     margin-left: 25%;
   }
 
-  .filter-price-sidebar{
+  .filter-price-sidebar {
     display: flex;
     font-weight: bold;
   }
 
-  .filter-p{
+  .filter-p {
     margin-right: 150px;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    margin-top: 42px;
+    margin-left: 100px;
+    width: 160px;
+    /* background-color: white; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .dropdown-item {
+    display: block;
+    color: darkblue;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background-color: #b9d6f3;
   }

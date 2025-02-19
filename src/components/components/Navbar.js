@@ -21,8 +21,8 @@ const NavBar = () => {
             <path d="M16.2087 16.2009L21.0078 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </button>
-        <a href="" className="nav-btn">Profile</a>
-        <a href="" className="nav-btn">Cart</a>
+        <a href="/" className="nav-btn">Profile</a>
+        <Link to="/cart" className="nav-btn">Cart</Link>
       </div>
     </div>
   );

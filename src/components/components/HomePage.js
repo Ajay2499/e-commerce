@@ -3,6 +3,7 @@ import Highlight from "./Highlight";
 import BrandsSlider from "./BrandsSlider";
 import CategoryComponent from "./CategoryComponent";
 import VideoBuffering from "./VideoBuffering";
+import ProductCard from "../ProductDetails/ProductCard";
 
 const HomePage = () =>{
 

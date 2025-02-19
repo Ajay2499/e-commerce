@@ -1,0 +1,131 @@
+.product-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 100%;
+    height: 90vh;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 650px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 16px;
+    margin-left: 40px;
+}
+
+.product-details {
+    flex: 1;
+    margin-top: 150px;
+    margin-left: 100px;
+    padding-bottom: 20%;
+}
+
+.product-name {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.product-price {
+    font-size: 2rem;
+    color: #ff5733;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.size-heading, .quantity-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-sizes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.size {
+    display: inline-block;
+    padding: 8px 18px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.size:hover {
+    background-color: #9aa1a3;
+}
+
+.selected {
+    background-color: #04546d;
+    color: rgb(252, 253, 253);
+    border-color: #020e13;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.quantity-btn {
+    margin: 10px 30px 0px 30px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.quantity-div{
+    margin: 17px 0px 0px 100px;
+}
+
+.quantity {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.button-group {
+    display: grid;
+    gap: 10px;
+    margin-top: 45px;
+}
+
+.add-to-cart, .buy-now {
+    padding: 14px 12px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    border: 2px solid rgb(14, 14, 15);
+    cursor: pointer;
+    width: 370px;
+    /* border-radius: 4px; */
+}
+
+.add-to-cart {
+    background: #f9f7f7;
+    color: rgb(2, 32, 56);
+    font-weight: 400;
+}
+.add-to-cart:hover  {
+    border: 3px solid rgb(4, 78, 118);
+    transition: border 0.2s ease-out;
+}
+
+.buy-now {
+    background: #04546d;
+    color: white;
+}
+
+.buy-now:hover{
+    box-shadow: inset 0 0 250px 250px rgba(255, 255, 255, 0.1);
+}
