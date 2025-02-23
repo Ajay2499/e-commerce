@@ -4,6 +4,7 @@ import { FaFilter, FaSort } from "react-icons/fa";
 import "../ProductDetails-CSS/CategorySection.css";
 import ClothingCard from "./ClothingCard";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const CategorySection = () => {
     const [price, setPrice] = useState(3999);
@@ -18,14 +19,10 @@ const CategorySection = () => {
     useEffect(() => {
         const fetchCategoryData = async () => {
             try {
-                const response = await fetch("/Data.json");
-                const jsonData = await response.json();
+                const responseData = await axios.get("https://localhost:44348/api/Category/CategoryProducts");
 
-                if (jsonData.categories[formattedCategory]) {
-                    setCategoryData(jsonData.categories[formattedCategory]);
-                } else {
-                    setCategoryData([]);
-                }
+                const categoryList = responseData.data.filter((c) => c.categoryName === formattedCategory);
+                setCategoryData(categoryList);
             } catch (error) {
                 console.error("Error fetching JSON:", error);
             }
@@ -38,13 +35,14 @@ const CategorySection = () => {
     };
 
     const handleSizeChange = (size) => {
-        setSelectedSizes((prevSizes) => prevSizes.includes(size) ? prevSizes.filter((s) => s != size) : [...prevSizes, size]);
+        setSelectedSizes((prevSizes) => prevSizes.includes(size) ? prevSizes.filter((s) => s !== size) : [...prevSizes, size]);
     };
 
     const filteredAndSortedData = [...categoryData]
         .filter((product) => product.price <= price)
-        .filter((product) => selectedSizes.length === 0 || product.size.some((s) => selectedSizes.includes(s)))
+        .filter((product) => selectedSizes.length === 0 ||  product.sizes.some((s) => selectedSizes.includes(s)))
         .sort((a, b) => (lowToHigh ? a.price - b.price : b.price - a.price));
+
 
     return (
         <div className="category-container">
@@ -101,7 +99,7 @@ const CategorySection = () => {
                 <div className="cards-container">
                     {filteredAndSortedData.length > 0 ? (
                         filteredAndSortedData.map((product) => (
-                            <ClothingCard key={product.id} product={product} />
+                            <ClothingCard key={product.ProductID} product={product} />
                         ))
                     ) : (
                         <h2 className="no-products">No products found in this category.</h2>

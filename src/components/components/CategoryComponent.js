@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
 import "../CSS/CategoryComponent.css";
+import axios from "axios";
 
 const CategoryComponent = () => {
     const [categories, setCategories] = useState([]);
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch("/Data.json");
-                const jsonData = await response.json();
+                const response = await axios.get("https://localhost:44348/api/Category");
+                console.log("API Response:", response.data);
 
-                const categoryList = Object.entries(jsonData.categories).map(([category, items]) => ({
-                    name: category,
-                    image: items[0]?.imageURL || "https://example.com/default.jpg",
+                const categoryList = response.data.map((item) => ({
+                    name: item.categoryName, 
+                    image: item.firstProductImage || "https://example.com/default.jpg",
                 }));
+
                 setCategories(categoryList);
             } catch (error) {
-                console.error("Error fetching JSON:", error);
+                console.error("Error fetching categories:", error);
             }
         };
 
