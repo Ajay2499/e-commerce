@@ -6,7 +6,8 @@ import ProductCard from './components/ProductDetails/ProductCard';
 import Cart from './components/components/Cart';
 import { CartProvider } from './components/components/CartContext';
 import Login from './components/Authentication/Login';
-import Signup from './components/Authentication/SignUp';
+import SignUp from './components/Authentication/SignUp';
+import PrivateRoute from './components/Authentication/PrivateRoute';
 
 function App() {
   return (
@@ -14,16 +15,19 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/category/:categoryName" element={<CategorySection />} />
-            <Route path="/product/:categoryName" element={<ProductCard />} />
-            <Route path="/cart" element={<Cart />} />
+            {/* Public Routes */}
+            <Route path="/" element={<Login />} />
+            <Route path="/signUp" element={<SignUp />} />
+
+            {/* Protected Routes */}
+            <Route path="/homePage" element={<PrivateRoute><HomePage /></PrivateRoute>} />
+            <Route path="/category/:categoryName" element={<PrivateRoute><CategorySection /></PrivateRoute>} />
+            <Route path="/product/:categoryName" element={<PrivateRoute><ProductCard /></PrivateRoute>} />
+            <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
           </Routes>
         </div>
       </Router>
     </CartProvider>
-
   );
 }
 
