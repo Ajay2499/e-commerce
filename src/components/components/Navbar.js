@@ -22,7 +22,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/" className="logo">Fuaark</Link>
+      <Link to="/homePage" className="logo">Fuaark</Link>
       <div className="nav-links">
         <a className="nav-li">Men</a>
         <a className="nav-li">Women</a>

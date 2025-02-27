@@ -11,18 +11,18 @@ const ProductCard = () => {
     const location = useLocation();
     const [selectedSize, setSelectedSize] = useState("XS");
     const product = location.state?.product;
-    console.log(product);
     const { addToCart } = useCart();
 
     const HandleAddCart = (selectedSize,quantity) => {
         const addProduct = {
-            id: product.id,
+            id: product.productId,
             name: product.productName,
             size: selectedSize,
             price : product.price,
             quantity: quantity,
             imageURL: product.imageURL
         };
+        console.log(selectedSize);
         addToCart(addProduct);
     } 
 
@@ -64,7 +64,7 @@ const ProductCard = () => {
                     </div>
 
                     <div className="button-group">
-                        <button to={`/cart`} className="add-to-cart" onClick={() => HandleAddCart(selectedSize, quantity)}>Add to Cart</button>
+                        <button className="add-to-cart" onClick={() => HandleAddCart(selectedSize, quantity)}>Add to Cart</button>
                         <button className="buy-now">Buy It Now</button>
                     </div>
                 </div>

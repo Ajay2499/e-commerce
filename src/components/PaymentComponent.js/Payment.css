@@ -1,0 +1,37 @@
+.payment-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .payment-options {
+    width: 50%;
+  }
+  
+  .price-details {
+    width: 40%;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .btn {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff3f6c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .discount {
+    color: green;
+  }
+  
+  .free {
+    color: blue;
+  }
+  

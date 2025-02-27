@@ -8,6 +8,8 @@ import { CartProvider } from './components/components/CartContext';
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
 import PrivateRoute from './components/Authentication/PrivateRoute';
+import AddressComponent from './components/AddressComponent/AddressComponent';
+import Payment from './components/PaymentComponent.js/Payment';
 
 function App() {
   return (
@@ -20,10 +22,12 @@ function App() {
             <Route path="/signUp" element={<SignUp />} />
 
             {/* Protected Routes */}
-            <Route path="/homePage" element={<PrivateRoute><HomePage /></PrivateRoute>} />
-            <Route path="/category/:categoryName" element={<PrivateRoute><CategorySection /></PrivateRoute>} />
-            <Route path="/product/:categoryName" element={<PrivateRoute><ProductCard /></PrivateRoute>} />
-            <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+            <Route path="/homePage" element={<HomePage />} />
+            <Route path="/category/:categoryName" element={<CategorySection />} />
+            <Route path="/product/:categoryName" element={<ProductCard />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path='/address' element={<AddressComponent />} />
+            <Route path='/payment' element={<Payment />} />
           </Routes>
         </div>
       </Router>

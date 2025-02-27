@@ -1,0 +1,93 @@
+.address-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .address-section {
+    width: 60%;
+  }
+  
+  .address-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  
+  .default {
+    border: 2px solid green;
+  }
+  
+  .address-header h3 {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .address-type {
+    background: lightgray;
+    padding: 3px 6px;
+    border-radius: 5px;
+  }
+  
+  .address-actions {
+    margin-top: 10px;
+  }
+  
+  .add-btn, .edit-btn, .remove-btn {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    background: orange;
+    border: none;
+  }
+  
+  .remove-btn {
+    background: red;
+    border: none;
+    color: white;
+  }
+  
+  .cart-summary {
+    width: 35%;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .popup-actions {
+    margin-top: 10px;
+  }
+  
+  .cancel-btn {
+    background: gray;
+    margin-right: 10px;
+  }
+  
+  .save-btn {
+    background: green;
+    color: white;
+  }
+  

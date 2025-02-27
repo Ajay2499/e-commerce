@@ -10,7 +10,6 @@ const CategoryComponent = () => {
         const fetchCategories = async () => {
             try {
                 const response = await axios.get("https://localhost:44348/api/Category");
-                console.log("API Response:", response.data);
 
                 const categoryList = response.data.map((item) => ({
                     name: item.categoryName, 

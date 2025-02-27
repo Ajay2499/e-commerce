@@ -2,9 +2,12 @@ import "../CSS/Cart.css";
 import NavBar from "./Navbar";
 import { useCart } from "./CartContext";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Cart = () => {
     const { cartItems, removeFromCart, handleQuantityProducts } = useCart();
+    const navigate = useNavigate();
 
     // Function to handle quantity change
     const handleQuantityChange = (id, amount, size) => {
@@ -16,7 +19,48 @@ const Cart = () => {
         removeFromCart(id, size);
     };
 
-    // Calculate total price
+    const handleCheckOut = async () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("Please log in first!");
+            navigate("/");
+            return;
+        }
+        const cartData = {
+            cartItems: cartItems.map(item => ({
+                productID: item.id,
+                sizeName: item.size,  // Ensure SizeID is an integer
+                quantity: item.quantity,
+                price: item.price  // Price will be verified by backend
+            }))
+        };
+
+        try {
+            const response = await axios.post(
+                "https://localhost:44348/api/Cart/Checkout",
+                cartData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            if (response.status === 200) {
+                alert("Checkout successful!");
+                navigate("/address");
+            } else {
+                throw new Error("Checkout failed");
+            }
+        } catch (error) {
+            console.error("Error during checkout:", error.response?.data);
+            alert("Error: " + error.response.data?.message);
+        }
+    };
+
+
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
@@ -42,7 +86,6 @@ const Cart = () => {
                             </div>
 
                             <div className="cart-item-quantity">
-                                {/* <button onClick={() => HandleDelete(item.id , item.size)}>Delete</button> */}
                                 <button onClick={() => handleQuantityChange(item.id, -1, item.size)} disabled={item.quantity <= 1}>−</button>
                                 <span>{item.quantity}</span>
                                 <button onClick={() => handleQuantityChange(item.id, 1, item.size)} disabled={item.quantity >= 10}>+</button>
@@ -59,7 +102,7 @@ const Cart = () => {
             <div className="cart-total">
                 <h3>Total</h3>
                 <p>Rs. {totalPrice}</p>
-                <button className="checkout-btn">Check out</button>
+                <button className="checkout-btn" onClick={handleCheckOut} >Check out</button>
             </div>
         </div>
     );
