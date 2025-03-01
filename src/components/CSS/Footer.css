@@ -1,95 +1,144 @@
 .footer {
-    background-color: #f8f8f8;
-    color: #333;
-    padding: 40px 20px;
-    font-family: Arial, sans-serif;
-  }
-  
+  background-color: #f8f8f8;
+  color: #333;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 2000px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* About Section */
+.footer-about {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-about h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-about h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.footer-about p {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 350px;
+}
+
+/* Links Section */
+.footer-links {
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  min-width: 400px;
+  gap: 40px;
+}
+
+.footer-links div {
+  flex: 1;
+  min-width: 150px;
+}
+
+.footer-links h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li:hover {
+  color: #007bff;
+}
+
+/* Contact Section */
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-contact h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer-contact a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons svg {
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.1);
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 430px) {
   .footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    /* margin: 0 auto; */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  
-  .footer-about {
-    flex: 1;
-    min-width: 250px;
-    margin-bottom: 20px;
-  }
-  
-  .footer-logo {
-    width: 120px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-about h3,
-  .footer-contact h3 {
-    font-weight: bold;
-  }
-  
-  .footer-about p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  
+
   .footer-links {
-    display: flex;
-    flex: 2;
-    justify-content: space-between;
-    min-width: 400px;
-    margin-left: 80px;
-  }
-  
-  .footer-pages{
-    margin-left: 40%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .footer-policies{
-    margin-left: 40%;
+  .footer-links div {
+    margin-bottom: -10px;
   }
 
-  .footer-links h4 {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .footer-links ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-links ul li {
-    white-space: nowrap; /* Prevents text from wrapping */
-    overflow: hidden;
-    margin-bottom: 20px;
-    text-overflow: ellipsis; /* Adds "..." if the text is too long */
-  }
-  
-  
-  .footer-contact {
-    flex: 1;
-    min-width: 250px;
-  }
-  
-  .footer-contact a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .footer-contact a:hover {
-    text-decoration: underline;
-  }
-  
   .social-icons {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    justify-content: center;
   }
-  
-  .social-icons svg {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AddressComponent.css";
+import "./AddressPopup.css";
 
 const AddressPopup = ({ closePopup, saveAddress, editData }) => {
   const [form, setForm] = useState(
@@ -24,14 +24,6 @@ const AddressPopup = ({ closePopup, saveAddress, editData }) => {
         <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
         <input type="text" name="mobile" value={form.mobile} onChange={handleChange} placeholder="Mobile No" required />
         <textarea name="address" value={form.address} onChange={handleChange} placeholder="Address" required />
-        <div className="address-type">
-          <label>
-            <input type="radio" name="type" value="Home" checked={form.type === "Home"} onChange={handleChange} /> Home
-          </label>
-          <label>
-            <input type="radio" name="type" value="Office" checked={form.type === "Office"} onChange={handleChange} /> Office
-          </label>
-        </div>
         <div className="popup-actions">
           <button className="cancel-btn" onClick={closePopup}>Cancel</button>
           <button className="save-btn" onClick={handleSubmit}>Save</button>

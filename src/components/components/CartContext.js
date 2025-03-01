@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
@@ -11,7 +12,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevCart) => {
-      const existingItem = prevCart.find(product => product.productId === item.id && product.size === item.size);
+      const existingItem = prevCart.find(product => product.id === item.id && product.size === item.size);
 
       if (existingItem) {
         // Update quantity if item already exists     
@@ -34,8 +35,37 @@ export const CartProvider = ({ children }) => {
     );
   }
 
+  const updateCart = (responsedata) => {
+    setCartItems(responsedata)
+  }
+
+  const sendCartToBackend = async (cartData) => {
+    const token = localStorage.getItem("token");
+
+    if (!token || cartData.length === 0) return;
+
+    try {
+       await axios.post(
+        "https://localhost:44348/api/Cart/Checkout",
+        cartData ,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      alert("Cart items successfully saved!");
+    } catch (error) {
+      console.error("Error sending cart:", error.response?.data);
+      alert("Error sending cart: " + error.response?.data?.message);
+    }
+  };
+
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart , handleQuantityProducts }}>
+    <CartContext.Provider value={{ cartItems, addToCart,sendCartToBackend,  updateCart, removeFromCart, handleQuantityProducts }}>
       {children}
     </CartContext.Provider>
   );

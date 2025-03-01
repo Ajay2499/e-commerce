@@ -25,9 +25,11 @@ function App() {
             <Route path="/homePage" element={<HomePage />} />
             <Route path="/category/:categoryName" element={<CategorySection />} />
             <Route path="/product/:categoryName" element={<ProductCard />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path='/address' element={<AddressComponent />} />
-            <Route path='/payment' element={<Payment />} />
+            <Route>
+              <Route path="/cart" element={<Cart />} />
+              <Route path='/address' element={<AddressComponent />} />
+              <Route path='/payment' element={<Payment />} />
+            </Route>
           </Routes>
         </div>
       </Router>

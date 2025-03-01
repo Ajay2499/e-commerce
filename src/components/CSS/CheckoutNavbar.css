@@ -1,0 +1,40 @@
+.checkout-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff3f6c;
+    margin-right: 120px;
+    
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: gray;
+    margin: 0px 400px 0px 200px;
+}
+
+.step {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.step.active {
+    color: teal;
+    text-decoration: underline;
+}
+
+.separator {
+    color: gray;
+}

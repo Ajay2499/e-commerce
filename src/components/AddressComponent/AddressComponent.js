@@ -3,6 +3,7 @@ import "./AddressComponent.css";
 import AddressPopup from "./AddressPopup";
 import CartSummary from "../components/CartSummary";
 import NavBar from "../components/Navbar";
+import CheckoutNavbar from "../components/CheckoutNavbar";
 
 const AddressComponent = () => {
     const [addresses, setAddresses] = useState([
@@ -47,16 +48,17 @@ const AddressComponent = () => {
 
     return (
         <div>
-            <NavBar />
+            <CheckoutNavbar />
             <div className="address-container">
                 <div className="address-section">
-                    <h2>Select Delivery Address</h2>
-                    <button className="add-btn" onClick={() => setShowPopup(true)}>Add New Address</button>
-
+                    <div className="address-h1-btn">
+                        <h2>Select Delivery Address</h2>
+                        <button className="add-btn" onClick={() => setShowPopup(true)}>Add New Address</button>
+                    </div>
                     {addresses.map((addr) => (
                         <div key={addr.id} className={`address-card ${addr.isDefault ? "default" : ""}`}>
                             <div className="address-header">
-                                <h3>{addr.name} <span className="address-type">{addr.type}</span></h3>
+                                <h3>{addr.name}</h3>
                                 <p>{addr.address}</p>
                                 <p><strong>Mobile:</strong> {addr.mobile}</p>
                             </div>
@@ -66,10 +68,10 @@ const AddressComponent = () => {
                             </div>
                         </div>
                     ))}
+                    <CartSummary />
+                    <div>
+                    </div>
                 </div>
-
-                <CartSummary />
-
                 {showPopup && (
                     <AddressPopup
                         closePopup={() => { setShowPopup(false); setEditAddress(null); }}

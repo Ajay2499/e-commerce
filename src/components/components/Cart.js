@@ -4,9 +4,11 @@ import { useCart } from "./CartContext";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import CheckoutNavbar from "./CheckoutNavbar";
+
 
 const Cart = () => {
-    const { cartItems, removeFromCart, handleQuantityProducts } = useCart();
+    const { cartItems, removeFromCart, handleQuantityProducts , sendCartToBackend} = useCart();
     const navigate = useNavigate();
 
     // Function to handle quantity change
@@ -23,6 +25,7 @@ const Cart = () => {
         const token = localStorage.getItem("token");
 
         if (!token) {
+            localStorage.setItem("pendingCart", JSON.stringify(cartItems));
             alert("Please log in first!");
             navigate("/");
             return;
@@ -35,37 +38,14 @@ const Cart = () => {
                 price: item.price  // Price will be verified by backend
             }))
         };
-
-        try {
-            const response = await axios.post(
-                "https://localhost:44348/api/Cart/Checkout",
-                cartData,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`
-                    }
-                }
-            );
-
-            if (response.status === 200) {
-                alert("Checkout successful!");
-                navigate("/address");
-            } else {
-                throw new Error("Checkout failed");
-            }
-        } catch (error) {
-            console.error("Error during checkout:", error.response?.data);
-            alert("Error: " + error.response.data?.message);
-        }
+        sendCartToBackend(cartData);
     };
-
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     return (
         <div className="cart-container">
-            <NavBar />
+            <CheckoutNavbar />
             <div className="cart-title-count">
                 <h2 className="cart-title">Cart</h2>
                 <h3 className="cart-count">{cartItems.length} items in your cart</h3>

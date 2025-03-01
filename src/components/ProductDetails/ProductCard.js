@@ -22,7 +22,6 @@ const ProductCard = () => {
             quantity: quantity,
             imageURL: product.imageURL
         };
-        console.log(selectedSize);
         addToCart(addProduct);
     } 
 

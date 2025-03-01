@@ -1,74 +1,179 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: whitesmoke;
-    color: darkblue;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: whitesmoke;
+  color: darkblue;
+  transition: all 0.3s ease-in-out;
+  height: 55px;
+  z-index: 1000;
+}
+
+.navbar-scroll {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(71, 153, 191);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 27px;
+  gap: 30px;
+}
+
+.nav-li {
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-li:hover {
+  color: #f4a261;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-right: 20px;
+  position: relative;
+}
+
+/* Search Button */
+.nav-btn-search {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-search:hover {
+  color: orange;
+}
+
+/* Search Bar */
+.search-bar {
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  margin-left: -10px;
+}
+
+/* Profile Section */
+.profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  font-size: 24px;
+  color: rgb(14, 14, 15);
+  transition: color 0.3s ease-in-out;
+}
+
+.profile-icon:hover {
+  color: orange;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.profile-dropdown a,
+.profile-dropdown button {
+  padding: 7px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: rgb(11, 11, 11);
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown button:hover {
+  background: #87664a;
+  color: white;
+}
+
+/* Cart Icon */
+.cart-icon {
+  position: relative;
+  color: rgb(13, 13, 13);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease-in-out;
+}
+
+.cart-icon:hover {
+  color: orange;
+}
+
+.cart-count {
+  position: absolute;
+  top: -130px;
+  right: -8px;
+  background: rgb(111, 109, 109);
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: rgb(71, 153, 191);
-  }
-  
+
   .nav-links {
-    list-style: none;
-    display: flex;
-    cursor: pointer;
-    gap: 30px;
-  }
-
-  .nav-li{
-    font-weight: bold;
-    color: var(--gsc-text-color-100);
-  }
-  
-  .nav-item {
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .nav-item:hover {
-    color: #f4a261;
-  }
-  
-  .nav-buttons {
-    display: flex;
-    margin-top: 10px;
+    flex-direction: column;
     gap: 10px;
-    font-weight: bold;
-    color: darkblue;
-  }
-  .nav-btn-search{
-    width: 30px;
-    height: 30px;
-    margin-right: 25px;
-    color: var(--gsc-text-color-100);
-    cursor: pointer;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    overflow: hidden;
-    outline: none;
   }
 
-  .nav-btn-search:hover{
-    color: orange;
+  .nav-buttons {
+    flex-direction: column;
+    margin-top: 10px;
   }
 
-  .nav-btn {
-    border: none;
-    margin-right: 25px;
-    color: var(--gsc-text-color-100);
-    cursor: pointer;
-    color: darkblue;
-    text-decoration: none;
-    transition: background-color 0.3s;
+  .search-bar {
+    width: 80%;
   }
-  
-  .nav-btn:hover {
-    color: orange;
-  }
-  
+}

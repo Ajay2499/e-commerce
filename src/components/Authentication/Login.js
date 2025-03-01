@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "../Authentication/Auth.css";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { useCart } from "../components/CartContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { sendCartToBackend, cartItems } = useCart();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +27,35 @@ const Login = () => {
 
       if (response && response.token) {
         window.alert("Login successful!");
+        localStorage.setItem("token", response.token);
+
+        const pendingCart = localStorage.getItem("pendingCart");
+        if (pendingCart) {
+          const savedCart = JSON.parse(pendingCart);
+          if (savedCart.length > 0) {
+            const cartData = {
+              cartItems: savedCart.map(item => ({
+                productID: item.id,
+                sizeName: item.size,
+                quantity: item.quantity,
+                price: item.price
+              }))
+            };
+            console.log(cartData);
+            await sendCartToBackend(cartData);
+          }
+          localStorage.removeItem("pendingCart"); // Clear pending cart after sending
+        }
+
+        // const cartData = {
+        //   cartItems: cartItems.map(item => ({
+        //     productID: item.id,
+        //     sizeName: item.size,
+        //     quantity: item.quantity,
+        //     price: item.price
+        //   }))
+        // };
+        // await sendCartToBackend(cartData);
         navigate("/homePage");
       } else {
         window.alert("Invalid credentials");
